@@ -1,10 +1,12 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { Space, Typography, Auth } from '@supabase/ui';
 import { supabase } from '../utils/initSupabase';
 
-const AuthUser: FC = () => {
-  const [authView, setAuthView] = useState('sign_in');
+type Props = {
+  view: AuthView;
+};
 
+const AuthUser: FC<Props> = ({ view }) => {
   return (
     <Space siize={8} direction="vertical">
        <div>
@@ -16,7 +18,7 @@ const AuthUser: FC = () => {
         supabaseClient={supabase}
         providers={['google', 'github']}
         // @ts-ignore
-        view={authView}
+        view={view}
         socialLayout="horizontal"
         socialButtonSize="xlarge"
       />
