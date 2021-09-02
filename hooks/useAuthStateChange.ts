@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../utils/initSupabase';
-import { AuthView } from '../types';
+import { AuthView } from '../types/index.d';
 
 export const useAuthStateChange = () => {
   const [authView, setAuthView] = useState<AuthView>(AuthView.SIGN_IN);
