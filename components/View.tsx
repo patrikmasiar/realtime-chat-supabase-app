@@ -12,7 +12,7 @@ const View: FC = () => {
     return <AuthUser view={authView} />
   }
 
-  return <SignedIn />;
+  return <SignedIn user={user} />;
 };
 
 export default View;
