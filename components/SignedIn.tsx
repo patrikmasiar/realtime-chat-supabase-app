@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useAuthStateChange } from '../hooks/useAuthStateChange';
-import { AuthView } from '../types';
+import { AuthView } from '../types/index.d';
 import UpdatePassword from './UpdatePassword';
 import { Typography, Space } from '@supabase/ui';
 import { supabase } from '../utils/initSupabase';
