@@ -2,10 +2,13 @@ import { FC } from 'react';
 import { useAuthStateChange } from '../hooks/useAuthStateChange';
 import { AuthView } from '../types';
 import UpdatePassword from './UpdatePassword';
-import { Typography, Space, Button, Icon } from '@supabase/ui';
+import { Typography, Space } from '@supabase/ui';
 import { supabase } from '../utils/initSupabase';
 import { useUserData } from '../hooks/useUserData';
 import Link from 'next/link';
+import LogoutButton from './LogoutButton';
+import Loader from './Loader';
+import FetchError from './FetchError';
 
 type Props = {
   user: any; // TODO
@@ -23,16 +26,9 @@ const SignedIn: FC<Props> = ({ user }) => {
       <>
         <Typography.Text>You&apos;re signed in</Typography.Text>
         <Typography.Text strong>Email: {user.email}</Typography.Text>
-
-        <Button
-          icon={<Icon type="LogOut" src={undefined} />}
-          type="outline"
-          onClick={() => supabase.auth.signOut()}
-        >
-          Log out
-        </Button>
+        <LogoutButton onClick={() => supabase.auth.signOut()} />
         {error && (
-          <Typography.Text>Failed to fetch user!</Typography.Text>
+          <FetchError />
         )}
         {data && !error ? (
           <>
@@ -45,7 +41,7 @@ const SignedIn: FC<Props> = ({ user }) => {
             </Typography.Text>
           </>
         ) : (
-          <div>Loading...</div>
+          <Loader />
         )}
 
         <Typography.Text>
