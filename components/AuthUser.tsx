@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Space, Typography, Auth } from '@supabase/ui';
 import { supabase } from '../utils/initSupabase';
+import { AuthView } from '../types/index.d';
 
 type Props = {
   view: AuthView;
