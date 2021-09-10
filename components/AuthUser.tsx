@@ -16,7 +16,6 @@ const AuthUser: FC<Props> = ({ view }) => {
       </div>
       <Auth
         supabaseClient={supabase}
-        providers={['google', 'github']}
         // @ts-ignore
         view={view}
         socialLayout="horizontal"
